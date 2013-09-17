@@ -14,6 +14,17 @@ def make_feeds(mails):
             li = x.body.split(' ')
             if len(li) == 1: li.append('#')
             item['content'] = '我在<a href="%s">%s</a>'%(li[1], li[0])
+        elif x.subject == 'Pocket':
+            li = x.body.split(' ')
+            if len(li) == 1: li.append('#')
+            item['content'] = '我在Pocket中加入了<a href="%s">%s</a>'%(li[1], li[0])
+        elif x.subject == 'Reminder_add':
+            item['content'] = '我添加了一个任务：%s'%x.body
+        elif x.subject == 'Reminder_complete':
+            item['content'] = '我完成了一个任务：%s'%x.body
+        elif x.subject == 'Calendar':
+            li = x.body.split(' ')
+            item['content'] = '我开始了一个日程：<a href="%s">%s</a>'%(li[1], li[0])
         else:
             item['content'] = '无法识别'
         res.append(item)
