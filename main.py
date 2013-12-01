@@ -40,7 +40,7 @@ class MainHandler(tornado.web.RequestHandler):
         res = ''
         for m in mails[:20]:
             m.fetch()
-        feeds = make_feeds(mails)
+        feeds = make_feeds(mails[:20])
         self.render('index.html', feeds = feeds)
 
 
