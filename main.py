@@ -38,7 +38,7 @@ class MainHandler(tornado.web.RequestHandler):
         g = gmail.login(GMAIL_USERNAME, GMAIL_PASSWORD)
         mails = g.label("info").mail()
         res = ''
-        for m in mails:
+        for m in mails[:20]:
             m.fetch()
         feeds = make_feeds(mails)
         self.render('index.html', feeds = feeds)
