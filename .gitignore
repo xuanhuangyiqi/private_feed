@@ -38,3 +38,5 @@ nosetests.xml
 .gitignore
 configs.py
 
+# Mac
+.DS_Store
